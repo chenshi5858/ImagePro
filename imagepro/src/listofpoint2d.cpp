@@ -8,14 +8,14 @@ namespace image{
     ListOfPoint2D::ListOfPoint2D(): head(nullptr){
     }
 
-    void ListOfPoint2D::insertFirst(int fila, int columna){
-        NodePoint2D* node = new NodePoint2D(fila, columna);
+    void ListOfPoint2D::insertFirst(Point2D* punto){
+        NodePoint2D* node = new NodePoint2D(punto);
         node -> setNext(head);
         head = node;
     }
 
-    void ListOfPoint2D::insertLast(int fila, int columna){
-        NodePoint2D* node = new NodePoint2D(fila, columna);
+    void ListOfPoint2D::insertLast(Point2D* punto){
+        NodePoint2D* node = new NodePoint2D(punto);
         if (head == nullptr){
             head = node;
         }else{
@@ -25,5 +25,9 @@ namespace image{
             }
             ptr->setNext(node);
         }
+    }
+
+    void ListOfPoint2D::print(){
+
     }
 }

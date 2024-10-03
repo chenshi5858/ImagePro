@@ -9,12 +9,12 @@ namespace image {
 	NodePoint2D* head;		
 	public:		
 	ListOfPoint2D();
-	void insertFirst(int fila, int columna);
-	void insertLast(int fila, int columna);
+	void insertFirst(Point2D* punto);
+	void insertLast(Point2D* punto);
 	void removeFirst();
-	void remove(int fila, int columna);
+	void remove(Point2D* punto);
 	void removeAll();
-	NodePoint2D* find(int fila, int columna);
+	NodePoint2D* find(Point2D* punto);
 	void print();
 	virtual ~ListOfPoint2D();
 	};

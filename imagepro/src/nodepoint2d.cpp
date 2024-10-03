@@ -4,31 +4,25 @@
 #include "image/nodepoint2d.hpp"
 
 namespace image {
-	NodePoint2D::NodePoint2D(): row(-1), col(-1), ptr_next(nullptr){
+	NodePoint2D::NodePoint2D(): point(), ptr_next(nullptr){
     }
 
-    NodePoint2D::NodePoint2D(int fila, int columna, NodePoint2D* siguiente): row(fila), col(columna), ptr_next(siguiente){
+    NodePoint2D::NodePoint2D(Point2D* punto, NodePoint2D* siguiente): point(punto), ptr_next(siguiente){
     }
 
-    int NodePoint2D::getRow(){
-        return row;
+    Point2D* NodePoint2D::getPoint(){
+        return point;
     }
 
-    int NodePoint2D::getCol(){
-        return col;
+    NodePoint2D* NodePoint2D::getNext(){
+        return ptr_next;
     }
 
-    void NodePoint2D::setRow(int fila){
-        row = fila; 
-    }
-
-    void NodePoint2D::setCol(int columna){
-        col = columna;
+    void NodePoint2D::setPoint(Point2D* punto){
+        point = punto;
     }
 
     void NodePoint2D::setNext(NodePoint2D *nuevo){
         ptr_next = nuevo;
     }
-
-
 }
