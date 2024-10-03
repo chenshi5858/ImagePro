@@ -99,5 +99,9 @@ namespace image{
         return im;
     }
 
+    ListOfRegions Image::getRegions(){
+        
+    }
+
 }
 
