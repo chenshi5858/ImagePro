@@ -8,6 +8,10 @@ namespace image{
     ListOfPoint2D::ListOfPoint2D(): head(nullptr){
     }
 
+    NodePoint2D* ListOfPoint2D::getHead(){
+        return head;
+    }
+
     void ListOfPoint2D::insertFirst(Point2D* punto){
         NodePoint2D* node = new NodePoint2D(punto);
         node -> setNext(head);
