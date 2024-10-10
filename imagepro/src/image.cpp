@@ -1,4 +1,4 @@
-#include "image/image.hpp"
+#include "image.hpp"
 #include <fstream>
 #include <iostream>
 #include <cassert>
