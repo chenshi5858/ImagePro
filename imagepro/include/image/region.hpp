@@ -1,5 +1,6 @@
 
 #include "image/listofpoint2d.hpp"
+#include "image/image.hpp"
 
 namespace image{
     class Region{
@@ -7,6 +8,7 @@ namespace image{
         int id;
         int n_points2d;
         ListOfPoint2D* region_list;
+        Image* image;
         public:
         Region();
         Region(int id, int n_pixeles, ListOfPoint2D* lista_region);
