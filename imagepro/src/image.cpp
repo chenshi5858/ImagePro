@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <cstring>
+#include "image/stackofnodepoint2d.hpp"
 
 namespace image{
 
@@ -99,9 +100,103 @@ namespace image{
         return im;
     }
 
-    ListOfRegions Image::getRegions(){
-        
+    bool Image::isWithinBounds(int x, int y, int width, int height) {
+        return x >= 0 && y >= 0 && x < width && y < height;
     }
+
+    ListOfRegion* Image::getRegions() {
+        ListOfRegion* regions = new ListOfRegion();
+        bool* visited = new bool[width * height];
+        for (int i = 0; i < width * height; i++) {
+            visited[i] = false;
+        }
+
+        int regionId = 1;
+
+        int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
+        int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+
+                if (getValue(y, x) == 1 && !visited[y * width + x]) {
+                    ListOfPoint2D* regionPoints = new ListOfPoint2D();
+                    int regionSize = 0;
+                    StackofNodePoint2D stack;
+                    stack.push(new Point2D(x, y));
+                    visited[y * width + x] = true;
+                    while (!stack.isEmpty()) {
+                        Point2D* point = stack.top();
+                        stack.pop();
+                        regionPoints->insertLast(point);
+                        regionSize++;
+                        for (int i = 0; i < 8; i++) {
+                            int nx = point->getX() + dx[i];
+                            int ny = point->getY() + dy[i];
+
+                            if (isWithinBounds(nx, ny, width, height) &&
+                                getValue(ny, nx) == 1 && !visited[ny * width + nx]) {
+                                stack.push(new Point2D(nx, ny));
+                                visited[ny * width + nx] = true;
+                            }
+                        }
+                    }
+                    Region* region = new Region(regionId++, regionSize, regionPoints);
+                    regions->insertLast(region);
+                }
+            }
+        }
+        delete[] visited;
+        return regions;
+    }
+
+    
+
+
+    // ListOfRegions Image::getRegions(){
+    //     int dx = [-1, -1, -1, 0, 0, 1, 1, 1];
+    //     int dy = [-1, -1, -1, 0, 0, 1, 1, 1];
+    //     StackofNodePoint2D s;
+    //     ListOfRegion regiones;
+    //     s.push(0, 0) //elegimos un punto inicial arbitrario
+    //     bool visited[height][width];
+    //     for (int i = 0, i < height; i++){
+    //         for (int j = 0; j < width; j++){
+    //             visited[i][j] = false;
+    //         }
+    //     }
+    //     visited[0][0] = true;
+    //     int x_actual, y_actual, x_nuevo, y_nuevo;
+    //     bool wasVisited;
+        
+    //     while (!s.isEmpty()){
+    //         x_actual = s.top()->getPoint()->getX();
+    //         y_actual = s.top()->getPoint()->getY();
+    //         s.pop();
+    //         if(getvalue(x_actual,y_actual)=='1'){
+    //             Point2D* agregar_punto2d = new Point2D;
+    //             NodePoint2D* agregar_nodo2d = new NodePoint2D;
+    //             ListOfPoint2D* agregar_lista2d = new ListOfPoint2D;
+    //             NodeRegion* agregar_region = new NodeRegion;
+
+    //             agregar_punto2d->setX(x_actual);
+    //             agregar_punto2d->setX(y_actual);
+    //             agregar_nodo2d->setPoint(agregar_punto2d);
+    //             agregar_lista2d->
+    //         }
+    //         for (int i = 0; i < 8; i++){
+    //             x_nuevo = x_actual + dx[i];
+    //             y_nuevo = y_actual + dy[i];
+    //             wasVisited = visited[x_nuevo][y_nuevo];
+    //             if (!wasVisited){
+    //                 s.push(x_nuevo, y_nuevo);
+    //                 visited[x_nuevo][y_nuevo] = true;
+    //             }
+    //         }
+            
+    //     }
+
+    // }
 
 }
 

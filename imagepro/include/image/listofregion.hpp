@@ -18,5 +18,6 @@ namespace image {
 	NodeRegion* find(Region* region);
 	void print();
 	virtual ~ListOfRegion();
+	bool isWithinBounds(int x, int y, int width, int height);
 	};
 }
