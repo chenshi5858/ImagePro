@@ -4,6 +4,8 @@
 #include <cassert>
 #include <cstring>
 #include "image/stackofnodepoint2d.hpp"
+#include "image/listofregion.hpp"
+#include "image/region.hpp"
 
 namespace image{
 
@@ -107,48 +109,72 @@ namespace image{
     ListOfRegion* Image::getRegions() {
         ListOfRegion* regions = new ListOfRegion();
         bool* visited = new bool[width * height];
+
+        // Inicializamos el arreglo de visitados en falso
         for (int i = 0; i < width * height; i++) {
             visited[i] = false;
         }
 
-        int regionId = 1;
+        int regionId = 1;  // Identificador para las regiones
 
+        // Movimientos en las 8 direcciones
         int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
         int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
 
+        // Recorrer cada píxel de la imagen
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
 
+                // Si encontramos un píxel que no ha sido visitado y pertenece a una región (valor 1)
                 if (getValue(y, x) == 1 && !visited[y * width + x]) {
                     ListOfPoint2D* regionPoints = new ListOfPoint2D();
                     int regionSize = 0;
+
+                    // Usar tu pila personalizada en lugar de std::stack
                     StackofNodePoint2D stack;
-                    stack.push(new Point2D(x, y));
+                    stack.push(x, y);  // Agregamos el primer punto
                     visited[y * width + x] = true;
+
+                    // Búsqueda en profundidad (DFS) usando la pila personalizada
                     while (!stack.isEmpty()) {
-                        Point2D* point = stack.top();
+                        NodePoint2D* node = stack.top();
                         stack.pop();
-                        regionPoints->insertLast(point);
+                        int currentX = node->getPoint()->getX();
+                        int currentY = node->getPoint()->getY();
+
+                        // Agregamos el punto actual a la lista de puntos de la región
+                        regionPoints->insertLast(new Point2D(currentX, currentY));
                         regionSize++;
+
+                        // Recorremos los vecinos en las 8 direcciones
                         for (int i = 0; i < 8; i++) {
-                            int nx = point->getX() + dx[i];
-                            int ny = point->getY() + dy[i];
+                            int nx = currentX + dx[i];
+                            int ny = currentY + dy[i];
 
                             if (isWithinBounds(nx, ny, width, height) &&
                                 getValue(ny, nx) == 1 && !visited[ny * width + nx]) {
-                                stack.push(new Point2D(nx, ny));
-                                visited[ny * width + nx] = true;
+                                stack.push(nx, ny);  // Agregamos el vecino a la pila
+                                visited[ny * width + nx] = true;  // Lo marcamos como visitado
                             }
                         }
+
+                        delete node;  // Liberamos memoria del nodo procesado
                     }
-                    Region* region = new Region(regionId++, regionSize, regionPoints);
+
+                    // Crear la región y agregarla a la lista de regiones
+                    Region* region = new Region(regionId++, regionSize, regionPoints, width, height);
                     regions->insertLast(region);
                 }
             }
         }
+
+        // Liberamos memoria del arreglo de visitados
         delete[] visited;
+
+        // Devolvemos la lista de regiones
         return regions;
     }
+
 
     
 
