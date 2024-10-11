@@ -1,6 +1,8 @@
 /*
  Class NodePoint2D
 */
+#ifndef NODEPOINT2D_HPP
+#define NODEPOINT2D_HPP
 #include "point2D.hpp"
 
 namespace image {
@@ -35,3 +37,4 @@ namespace image {
 // 	void setNext(NodePoint2D *nuevo);
 // 	};
 // }
+#endif

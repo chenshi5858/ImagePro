@@ -1,7 +1,8 @@
 /*
  Class NodeRegion
 */
-
+#ifndef NODEREGION_HPP
+#define NODEREGION_HPP
 #include "region.hpp"
 
 namespace image {
@@ -18,3 +19,4 @@ namespace image {
     NodeRegion* getNext();
     };
 }
+#endif

@@ -1,6 +1,8 @@
 /*
  Class ListOfPoint2D
 */
+#ifndef LISTOFPOINT2D_HPP
+#define LISTOFPOINT2D_HPP
 #include "image/nodepoint2d.hpp"
 
 namespace image {
@@ -20,3 +22,4 @@ namespace image {
 	virtual ~ListOfPoint2D();
 	};
 }
+#endif

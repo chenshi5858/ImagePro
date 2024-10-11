@@ -1,7 +1,8 @@
 
 #include "image/listofpoint2d.hpp"
 #include "image/image.hpp"
-
+#ifndef REGION_HPP
+#define REGION_HPP
 namespace image{
     class Region{
         private:
@@ -23,3 +24,4 @@ namespace image{
         virtual ~Region(); 
     };
 };
+#endif

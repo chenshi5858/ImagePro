@@ -2,7 +2,8 @@
  Class StackOfNodePoint2D
 */
 #include "nodepoint2d.hpp"
-
+#ifndef STACKOFNODEPOINT2D_HPP
+#define STACKOFNODEPOINT2D_HPP
 namespace image {
 class StackofNodePoint2D {
 private:
@@ -18,3 +19,4 @@ public:
 	virtual ~StackofNodePoint2D();
 };
 }
+#endif

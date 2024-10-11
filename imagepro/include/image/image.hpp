@@ -5,6 +5,9 @@
 #include <string>
 #include "image/listofregion.hpp"
 
+#ifndef IMAGE_HPP
+#define IMAGE_HPP
+
 namespace image {
 	class Image; 
 	typedef unsigned char uchar;
@@ -29,3 +32,4 @@ namespace image {
 		bool isWithinBounds(int x, int y, int width, int height);        
 	};
 }
+#endif
