@@ -25,6 +25,7 @@ namespace image {
 		void show();
 		ListOfRegion* getRegions();
         virtual ~Image(); 
-		static Image* readImage(std::string &path);        
+		static Image* readImage(std::string &path);
+		bool isWithinBounds(int x, int y, int width, int height);        
 	};
 }
