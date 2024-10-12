@@ -12,6 +12,10 @@ namespace image{
         head = node;
     }
 
+    NodeRegion* ListOfRegion::getHead(){
+        return head;
+    }
+
     void ListOfRegion::insertLast(Region* region){
         NodeRegion* node = new NodeRegion(region);
         if (head == nullptr){
