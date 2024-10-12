@@ -321,30 +321,6 @@ src/region.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/imagepro.dir/build.make CMakeFiles/imagepro.dir/src/region.cpp.s
 .PHONY : src/region.cpp.s
 
-src/stackofnodepoint2d.o: src/stackofnodepoint2d.cpp.o
-.PHONY : src/stackofnodepoint2d.o
-
-# target to build an object file
-src/stackofnodepoint2d.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imagepro.dir/build.make CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o
-.PHONY : src/stackofnodepoint2d.cpp.o
-
-src/stackofnodepoint2d.i: src/stackofnodepoint2d.cpp.i
-.PHONY : src/stackofnodepoint2d.i
-
-# target to preprocess a source file
-src/stackofnodepoint2d.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imagepro.dir/build.make CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.i
-.PHONY : src/stackofnodepoint2d.cpp.i
-
-src/stackofnodepoint2d.s: src/stackofnodepoint2d.cpp.s
-.PHONY : src/stackofnodepoint2d.s
-
-# target to generate assembly for a file
-src/stackofnodepoint2d.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/imagepro.dir/build.make CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.s
-.PHONY : src/stackofnodepoint2d.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -378,9 +354,6 @@ help:
 	@echo "... src/region.o"
 	@echo "... src/region.i"
 	@echo "... src/region.s"
-	@echo "... src/stackofnodepoint2d.o"
-	@echo "... src/stackofnodepoint2d.i"
-	@echo "... src/stackofnodepoint2d.s"
 .PHONY : help
 
 

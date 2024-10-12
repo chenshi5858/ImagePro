@@ -16,7 +16,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/noderegion.cpp" "CMakeFiles/imagepro.dir/src/noderegion.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/noderegion.cpp.o.d"
   "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/point2D.cpp" "CMakeFiles/imagepro.dir/src/point2D.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/point2D.cpp.o.d"
   "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/region.cpp" "CMakeFiles/imagepro.dir/src/region.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/region.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/stackofnodepoint2d.cpp" "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o.d"
   )
 
 # Targets to which this target links.

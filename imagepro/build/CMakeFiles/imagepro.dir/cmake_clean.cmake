@@ -15,8 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/imagepro.dir/src/point2D.cpp.o.d"
   "CMakeFiles/imagepro.dir/src/region.cpp.o"
   "CMakeFiles/imagepro.dir/src/region.cpp.o.d"
-  "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o"
-  "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o.d"
   "imagepro"
   "imagepro.pdb"
 )
