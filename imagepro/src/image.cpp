@@ -1,4 +1,4 @@
-#include "image.hpp"
+#include "image/image.hpp"
 #include <fstream>
 #include <iostream>
 #include <cassert>
@@ -6,6 +6,10 @@
 #include "image/stackofnodepoint2d.hpp"
 #include "image/listofregion.hpp"
 #include "image/region.hpp"
+#include "image/nodepoint2d.hpp"
+#include "image/listofpoint2d.hpp"
+#include "image/noderegion.hpp"
+#include "image/point2D.hpp"
 
 namespace image{
 
@@ -107,7 +111,8 @@ namespace image{
     }
 
     ListOfRegion* Image::getRegions() {
-        ListOfRegion* regions = new ListOfRegion();
+        
+        ListOfRegion* regions = new ListOfRegion;
         bool* visited = new bool[width * height];
 
         // Inicializamos el arreglo de visitados en falso
@@ -120,6 +125,8 @@ namespace image{
         // Movimientos en las 8 direcciones
         int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
         int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
+
+        
 
         // Recorrer cada píxel de la imagen
         for (int y = 0; y < height; y++) {
@@ -179,12 +186,12 @@ namespace image{
     
 
 
-    // ListOfRegions Image::getRegions(){
-    //     int dx = [-1, -1, -1, 0, 0, 1, 1, 1];
-    //     int dy = [-1, -1, -1, 0, 0, 1, 1, 1];
+    // ListOfRegion* Image::getRegions(){
+    //     int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+    //     int dy[] = {-1, -1, -1, 0, 0, 1, 1, 1};
     //     StackofNodePoint2D s;
     //     ListOfRegion regiones;
-    //     s.push(0, 0) //elegimos un punto inicial arbitrario
+    //     s.push(0, 0); //elegimos un punto inicial arbitrario
     //     bool visited[height][width];
     //     for (int i = 0, i < height; i++){
     //         for (int j = 0; j < width; j++){

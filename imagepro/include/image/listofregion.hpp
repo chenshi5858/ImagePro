@@ -15,11 +15,6 @@ namespace image {
 	ListOfRegion();
 	void insertFirst(Region* region);
 	void insertLast(Region* region);
-	void removeFirst();
-	void remove(Region* region);
-	void removeAll();
-	NodeRegion* find(Region* region);
-	void print();
 	virtual ~ListOfRegion();
 	};
 }

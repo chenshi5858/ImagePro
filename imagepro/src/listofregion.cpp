@@ -22,6 +22,10 @@ namespace image{
                 ptr = ptr->getNext();
             }
             ptr->setNext(node);
+        }
     }
+
+    ListOfRegion::~ListOfRegion(){
+        
     }
 }

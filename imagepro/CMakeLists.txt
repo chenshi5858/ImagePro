@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 
@@ -9,8 +8,18 @@ LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(imagepro imagepro.cpp src/image.cpp)
+# Asegúrate de incluir todos los archivos fuente necesarios
+add_executable(imagepro
+    imagepro.cpp
+    src/image.cpp
+    src/listofpoint2d.cpp
+    src/listofregion.cpp
+    src/nodepoint2d.cpp
+    src/noderegion.cpp
+    src/point2D.cpp
+    src/stackofnodepoint2d.cpp
+    src/region.cpp
+)
+
+# Agrega el directorio de encabezados
 target_include_directories(imagepro PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
-
-# add the executable

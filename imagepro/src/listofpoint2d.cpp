@@ -34,4 +34,8 @@ namespace image{
     void ListOfPoint2D::print(){
 
     }
+
+    ListOfPoint2D::~ListOfPoint2D(){
+        
+    }
 }
