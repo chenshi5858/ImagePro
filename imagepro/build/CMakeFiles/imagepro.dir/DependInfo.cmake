@@ -1,22 +1,24 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/imagepro.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/imagepro.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/image.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/image.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/listofpoint2d.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/listofpoint2d.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/listofregion.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/listofregion.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/nodepoint2d.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/nodepoint2d.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/noderegion.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/noderegion.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/point2D.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/point2D.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/region.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/region.cpp.o"
+  "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/src/stackofnodepoint2d.cpp" "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/build/CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/imagepro.cpp" "CMakeFiles/imagepro.dir/imagepro.cpp.o" "gcc" "CMakeFiles/imagepro.dir/imagepro.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/image.cpp" "CMakeFiles/imagepro.dir/src/image.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/image.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/listofpoint2d.cpp" "CMakeFiles/imagepro.dir/src/listofpoint2d.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/listofpoint2d.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/listofregion.cpp" "CMakeFiles/imagepro.dir/src/listofregion.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/listofregion.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/nodepoint2d.cpp" "CMakeFiles/imagepro.dir/src/nodepoint2d.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/nodepoint2d.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/noderegion.cpp" "CMakeFiles/imagepro.dir/src/noderegion.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/noderegion.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/point2D.cpp" "CMakeFiles/imagepro.dir/src/point2D.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/point2D.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/region.cpp" "CMakeFiles/imagepro.dir/src/region.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/region.cpp.o.d"
-  "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/src/stackofnodepoint2d.cpp" "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o" "gcc" "CMakeFiles/imagepro.dir/src/stackofnodepoint2d.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../include"
   )
 
 # Targets to which this target links.

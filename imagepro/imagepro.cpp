@@ -5,7 +5,7 @@
 
 
 int main(int nargs, char** vargs){
-    std::string filename("/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/images/image_1.bmp");
+    std::string filename("/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/images/image_1.bmp");
     std::cout << filename << std::endl;
     image::Image* im = nullptr;
     im = image::Image::readImage(filename);

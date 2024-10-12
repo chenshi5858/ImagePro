@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <cstring>
-#include "image/stackofnodepoint2d.hpp"
+#include <stack>
 #include "image/listofregion.hpp"
 #include "image/region.hpp"
 #include "image/nodepoint2d.hpp"
@@ -111,61 +111,58 @@ namespace image{
     }
 
     ListOfRegion* Image::getRegions() {
-        
         ListOfRegion* regions = new ListOfRegion;
         bool* visited = new bool[width * height];
 
-        // Inicializamos el arreglo de visitados en falso
+        // Inicializa el arreglo de visitados en falso
         for (int i = 0; i < width * height; i++) {
             visited[i] = false;
         }
 
-        int regionId = 1;  // Identificador para las regiones
-
-        // Movimientos en las 8 direcciones
+        int regionId = 1;  
         int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
         int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
 
-        
-
-        // Recorrer cada píxel de la imagen
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-
-                // Si encontramos un píxel que no ha sido visitado y pertenece a una región (valor 1)
                 if (getValue(y, x) == 1 && !visited[y * width + x]) {
                     ListOfPoint2D* regionPoints = new ListOfPoint2D();
                     int regionSize = 0;
 
-                    // Usar tu pila personalizada en lugar de std::stack
-                    StackofNodePoint2D stack;
-                    stack.push(x, y);  // Agregamos el primer punto
+                    // Usar std::stack para la búsqueda en profundidad
+                    std::stack<NodePoint2D*> stack;
+                    stack.push(new NodePoint2D(new Point2D(x, y)));  // Agregamos el primer nodo
+
                     visited[y * width + x] = true;
 
-                    // Búsqueda en profundidad (DFS) usando la pila personalizada
-                    while (!stack.isEmpty()) {
+                    // Búsqueda en profundidad (DFS) usando la pila estándar
+                    while (!stack.empty()) {
                         NodePoint2D* node = stack.top();
                         stack.pop();
-                        int currentX = node->getPoint()->getX();
-                        int currentY = node->getPoint()->getY();
 
-                        // Agregamos el punto actual a la lista de puntos de la región
-                        regionPoints->insertLast(new Point2D(currentX, currentY));
-                        regionSize++;
+                        if (node != nullptr && node->getPoint() != nullptr) {
+                            int currentX = node->getPoint()->getX();
+                            int currentY = node->getPoint()->getY();
 
-                        // Recorremos los vecinos en las 8 direcciones
-                        for (int i = 0; i < 8; i++) {
-                            int nx = currentX + dx[i];
-                            int ny = currentY + dy[i];
+                            // Agregamos el punto actual a la lista de puntos de la región
+                            regionPoints->insertLast(new Point2D(currentX, currentY));
+                            regionSize++;
 
-                            if (isWithinBounds(nx, ny, width, height) &&
-                                getValue(ny, nx) == 1 && !visited[ny * width + nx]) {
-                                stack.push(nx, ny);  // Agregamos el vecino a la pila
-                                visited[ny * width + nx] = true;  // Lo marcamos como visitado
+                            // Recorremos los vecinos en las 8 direcciones
+                            for (int i = 0; i < 8; i++) {
+                                int nx = currentX + dx[i];
+                                int ny = currentY + dy[i];
+
+                                if (isWithinBounds(nx, ny, width, height) &&
+                                    getValue(ny, nx) == 1 && !visited[ny * width + nx]) {
+                                    
+                                    stack.push(new NodePoint2D(new Point2D(nx, ny)));  // Agregamos el nuevo nodo a la pila
+                                    visited[ny * width + nx] = true;  // Lo marcamos como visitado
+                                }
                             }
-                        }
 
-                        delete node;  // Liberamos memoria del nodo procesado
+                            delete node;  // Liberamos memoria del nodo procesado
+                        }
                     }
 
                     // Crear la región y agregarla a la lista de regiones
@@ -181,6 +178,9 @@ namespace image{
         // Devolvemos la lista de regiones
         return regions;
     }
+
+
+
 
 
     
