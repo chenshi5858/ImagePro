@@ -15,6 +15,7 @@ namespace image {
 	ListOfRegion();
 	void insertFirst(Region* region);
 	void insertLast(Region* region);
+	int size();
 	NodeRegion* getHead();
 	virtual ~ListOfRegion();
 	};

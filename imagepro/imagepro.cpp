@@ -6,8 +6,6 @@
 #include <vector>
 #include <regex>
 
-
-
 int main(int nargs, char** vargs){
 
     std::cout<<"Bienvenido a ImagePro"<<std::endl;
@@ -25,7 +23,7 @@ int main(int nargs, char** vargs){
         iss>>nombre_comando;
         iss>>argumento;
         if (nombre_comando == "read"){
-            std::string filename = "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/images/"+argumento;
+            std::string filename = "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/images/"+argumento;
             imagenes.push_back(filename);
             std::cout << "im"+std::to_string(id) + " = " <<filename << std::endl;
             id++;
@@ -67,6 +65,26 @@ int main(int nargs, char** vargs){
                 }
             }else {
                 std::cout<<"Imagen no encontrada"<<std::endl;
+            }
+        }else if(nombre_comando == "getRegions"){
+            std::regex pattern("im(\\d+)");
+            std::smatch match;
+            if (std::regex_match(argumento, match, pattern)){
+                image::Image* im = nullptr;
+                int id_imagen = std::stoi(match[1]);
+                im = image::Image::readImage(imagenes[id_imagen-1]);
+                image::ListOfRegion* regiones = im->getRegions(); 
+                int num_regiones = regiones->size(); 
+                std::cout << "La imagen de im" << id_imagen << " tienes " << num_regiones << " regiones" << std::endl;
+                image::NodeRegion* nodo_region = regiones->getHead();
+                int contador_region = 1;
+                while(nodo_region != nullptr){
+                    std::cout << "Region " << contador_region << " -> size " << nodo_region->getRegion()->size() << std::endl;
+                    nodo_region = nodo_region->getNext();
+                    contador_region++;
+                }
+            }else {
+                std::cout << "Imagen no encontrada" << std::endl;
             }
         }else if (comando=="exit"){
             std::cout<<"Saliendo del programa..."<<std::endl;

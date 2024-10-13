@@ -6,11 +6,11 @@
 namespace image {
     class Region {
     private:
-        int id;                   // Identificador de la región
-        int n_points2d;           // Número de puntos en la región
-        ListOfPoint2D* region_list;  // Lista de puntos en la región
-        int width;                // Ancho de la imagen
-        int height;               // Alto de la imagen
+        int id;                  
+        int n_points2d;          
+        ListOfPoint2D* region_list; 
+        int width;              
+        int height;              
 
     public:
         Region();
@@ -24,10 +24,10 @@ namespace image {
         int getNumberOfPoints();
         ListOfPoint2D* getRegionList();
 
-        void showRegion();         // Método para mostrar la región
-
-        virtual ~Region();         // Destructor
+        void showRegion();
+        int size();
+        virtual ~Region();         
     };
 }
 
-#endif  // REGION_HPP
+#endif  

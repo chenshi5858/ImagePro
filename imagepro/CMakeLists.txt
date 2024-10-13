@@ -17,7 +17,6 @@ add_executable(imagepro
     src/nodepoint2d.cpp
     src/noderegion.cpp
     src/point2D.cpp
-    src/stackofnodepoint2d.cpp
     src/region.cpp
 )
 

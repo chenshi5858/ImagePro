@@ -13,15 +13,15 @@
 
 namespace image{
 
-    Image::Image(): width(0), height(0), th_value(120), data(nullptr){
+    Image::Image(): width(0), height(0), th_value(50), data(nullptr){
 
     }
 
-    Image::Image(int w, int h): width(w), height(h), th_value(120),  data(nullptr){
+    Image::Image(int w, int h): width(w), height(h), th_value(50),  data(nullptr){
 
     }
 
-    Image::Image(int w, int h, uchar* _data): width(w), height(h), th_value(120), data(_data){
+    Image::Image(int w, int h, uchar* _data): width(w), height(h), th_value(50), data(_data){
        threshold();
     }
 
@@ -42,23 +42,26 @@ namespace image{
         return static_cast<int>(data[pos]);
     }
 
-    void Image::show(){
+    void Image::show() {
         std::cout << "----------------------" << std::endl;
-        std::cout << "size [ (w: " << width << ") x   ( h:" << height << ")]" <<  std::endl;        
+        std::cout << "size [ (w: " << width << ") x   ( h:" << height << ")]" <<  std::endl;
         std::cout << "---------------------" << std::endl;
-        for(int i = 0 ; i < height ; i++ ){
-            for(int j = 0; j < width; j++ ){
-                //std::cout<< getValue(i,j) << " "; 
-                if (getValue(i,j) == 0) {
-                    std::cout<<" ";
-                }
-                else{
-                    std::cout<<"*";
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (getValue(i, j) == 0) {
+                    std::cout << " ";
+                } else {
+                    std::cout << "*";
                 }
             }
-            std::cout<<std::endl;
+            std::cout << std::endl;
         }
+        ListOfRegion* regions = getRegions();  
+        int numRegions = regions->size();     
+        std::cout << "Número de regiones en la imagen: " << numRegions << std::endl;
+        delete regions;
     }
+
 
     Image::~Image(){
 
@@ -113,8 +116,6 @@ namespace image{
     ListOfRegion* Image::getRegions() {
         ListOfRegion* regions = new ListOfRegion;
         bool* visited = new bool[width * height];
-
-        // Inicializa el arreglo de visitados en falso
         for (int i = 0; i < width * height; i++) {
             visited[i] = false;
         }
@@ -128,27 +129,17 @@ namespace image{
                 if (getValue(y, x) == 1 && !visited[y * width + x]) {
                     ListOfPoint2D* regionPoints = new ListOfPoint2D();
                     int regionSize = 0;
-
-                    // Usar std::stack para la búsqueda en profundidad
                     std::stack<NodePoint2D*> stack;
-                    stack.push(new NodePoint2D(new Point2D(x, y)));  // Agregamos el primer nodo
-
+                    stack.push(new NodePoint2D(new Point2D(x, y)));  
                     visited[y * width + x] = true;
-
-                    // Búsqueda en profundidad (DFS) usando la pila estándar
                     while (!stack.empty()) {
                         NodePoint2D* node = stack.top();
                         stack.pop();
-
                         if (node != nullptr && node->getPoint() != nullptr) {
                             int currentX = node->getPoint()->getX();
                             int currentY = node->getPoint()->getY();
-
-                            // Agregamos el punto actual a la lista de puntos de la región
                             regionPoints->insertLast(new Point2D(currentX, currentY));
                             regionSize++;
-
-                            // Recorremos los vecinos en las 8 direcciones
                             for (int i = 0; i < 8; i++) {
                                 int nx = currentX + dx[i];
                                 int ny = currentY + dy[i];
@@ -156,26 +147,19 @@ namespace image{
                                 if (isWithinBounds(nx, ny, width, height) &&
                                     getValue(ny, nx) == 1 && !visited[ny * width + nx]) {
                                     
-                                    stack.push(new NodePoint2D(new Point2D(nx, ny)));  // Agregamos el nuevo nodo a la pila
-                                    visited[ny * width + nx] = true;  // Lo marcamos como visitado
+                                    stack.push(new NodePoint2D(new Point2D(nx, ny))); 
+                                    visited[ny * width + nx] = true;  
                                 }
                             }
-
-                            delete node;  // Liberamos memoria del nodo procesado
+                            delete node;  
                         }
                     }
-
-                    // Crear la región y agregarla a la lista de regiones
                     Region* region = new Region(regionId++, regionSize, regionPoints, width, height);
                     regions->insertLast(region);
                 }
             }
         }
-
-        // Liberamos memoria del arreglo de visitados
         delete[] visited;
-
-        // Devolvemos la lista de regiones
         return regions;
     }
 

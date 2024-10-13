@@ -29,6 +29,17 @@ namespace image{
         }
     }
 
+    int ListOfRegion::size() {
+        int count = 0;
+        NodeRegion* current = head;
+        while (current != nullptr) {
+            count++;
+            current = current->getNext();
+        }
+        return count;
+    }
+
+
     ListOfRegion::~ListOfRegion(){
         
     }
