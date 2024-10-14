@@ -23,7 +23,7 @@ int main(int nargs, char** vargs){
         iss>>nombre_comando;
         iss>>argumento;
         if (nombre_comando == "read"){
-            std::string filename = "/home/pbn/Desktop/tarea2eda/ImagePro/imagepro/images/"+argumento;
+            std::string filename = "/home/edauandes/Desktop/tarea2eda/ImagePro/imagepro/images/"+argumento;
             imagenes.push_back(filename);
             std::cout << "im"+std::to_string(id) + " = " <<filename << std::endl;
             id++;
